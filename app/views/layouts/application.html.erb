@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyApp</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">MyApp</a>
+
+    <% if user_signed_in? %>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to('Log out', destroy_user_session_path, method: :delete, class: 'nav-link') %>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+</nav>
+
+<div class="container">
+  <%= yield %>
+</div>
+  </body>
+</html>
+
